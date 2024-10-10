@@ -12,22 +12,42 @@ Zapret — это инструмент, который помогает обхо
 
 ### Инструкции:
 
-1. **Скачайте последний [релиз](https://github.com/AikenOZ/fixdiscord/releases/tag/1.0.0)** и разархивируйте его в отдельную папку.
+1. **Скачайте последний [релиз](https://github.com/AikenOZ/fixdiscord/releases/tag/1.1.1)** и разархивируйте его в отдельную папку.
 
 2. **Запустите от имени администратора** нужный вам файл:
    - `discord.bat` — запустить обход блокировки Discord.
    - `discord_youtube.bat` — запустить обход блокировки Discord и YouTube.
    - `service_discord.bat` — запустить обход Discord и установить на автозапуск (в сервисах).
    - `service_discord_youtube.bat` — запустить обход Discord и YouTube и установить на автозапуск (в сервисах).
-   - `service_remove.bat` — остановить вышеуказанные сервисы.
-
+   - `service_goodbye_discord.bat` — запустить, если вы используете сервис goodbyedpi и хотите, чтобы zapret обходил только Discord (запускать после создания сервиса goodbyedpi).
+   - `service_remove.bat` — остановить и удалить вышеуказанные сервисы.
 
 ### Если не работает:
 
 - **Проверьте**, запускаете ли вы файлы от имени администратора.
-- **Убедитесь**, что в пути к файлам нет пробелов и русских символов.
+- **Убедитесь**, что в пути к файлам нет пробелов и русских символов. Отключите программы, которые могут мешать созданию сервиса (например, антивирусы).
+- **Отключите функцию TUN** (Tunneling) в настройках VPN, если не работает с VPN.
+- **Проверьте**, что сервис goodbyedpi запущен и называется "GoodbyeDPI", если не работает `service_goodbye_discord.bat`.
 - **Обновите бинарные файлы** с оригинального репозитория при необходимости.
-- **Оригинальный репозиторий**: [https://github.com/bol-van/zapret/tree/master/binaries/win64/zapret-winws](https://github.com/bol-van/zapret/tree/master/binaries/win64/zapret-winws)
+
+### YouTube не загружается?
+
+- Попробуйте включить `Kyber` и `QUIC` в настройках Chrome (`chrome://flags`).
+- В файле с обходом измените `--dpi-desync-fooling=md5sig` на `--dpi-desync-fooling=badseq` в строке с `--filter-tcp=443`.
+
+### Хочу удалить, но остался файл WinDivert?
+Для удаления оставшегося драйвера WinDivert, откройте cmd от имени администратора и пропишите следующее:
+```
+sc stop WinDivert
+sc delete WinDivert
+```
+Возможно, драйвер у вас будет записан по-другому. Для уточнения названия пропишите `driverquery | find "Divert"` в cmd.
+
+### Дополнительные адреса заблокированных сайтов можно добавить в список list-general.txt (для `*discord_youtube`) и в список list-discord (для файлов без `youtube` в названии). После добавления сервис нужно перезапустить
+
+### Оригинальный репозиторий
+
+[https://github.com/bol-van/zapret/tree/master/binaries/win64/zapret-winws](https://github.com/bol-van/zapret/tree/master/binaries/win64/zapret-winws)
 
 ## Способ 2: Использование GoodbyeDPI v0.2.3rc3
 
