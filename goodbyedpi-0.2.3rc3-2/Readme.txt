@@ -1,1 +1,0 @@
-Наш Telegram: @OZ_ITPQ
